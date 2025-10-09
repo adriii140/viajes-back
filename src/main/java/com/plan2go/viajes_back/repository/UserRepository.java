@@ -1,10 +1,13 @@
 package com.plan2go.viajes_back.repository;
 
-import com.plan2go.viajes_back.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, UUID> {
-    Optional<User> findByEmail(String email);
+import com.plan2go.viajes_back.api.dtos.User;
+import com.plan2go.viajes_back.entity.UserEntity;
+
+public interface UserRepository {
+
+    public List<User> findAllUsers();
+
+    
 }

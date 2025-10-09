@@ -11,14 +11,15 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor @AllArgsConstructor @Builder
-public class User {
+public class UserEntity {
     @Id
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password_hash", nullable = false)
@@ -26,6 +27,8 @@ public class User {
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
+
+    
 
     @PrePersist
     void prePersist() {
