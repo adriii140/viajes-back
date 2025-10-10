@@ -6,16 +6,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+
 @Getter
 @Setter
 public class User {
-    
 
     @JsonProperty("nombre")
     private String name;
 
     @JsonProperty("correo_electronico")
     private String email;
+
+    @JsonProperty("contrasena")
+    private String passwordHash;
 
 
 }
