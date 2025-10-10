@@ -2,6 +2,7 @@ package com.plan2go.viajes_back.service.impl;
 
 import java.util.List;
 
+import com.plan2go.viajes_back.api.register.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,8 @@ import com.plan2go.viajes_back.api.dtos.User;
 
 import com.plan2go.viajes_back.repository.UserRepository;
 import com.plan2go.viajes_back.service.UserService;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,5 +27,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findAllUsers() {
         return userRepository.findAllUsers();
     }
-    
+
+    @Override
+    public boolean createUser(UserRegister user) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return true;
+        }
+
 }
