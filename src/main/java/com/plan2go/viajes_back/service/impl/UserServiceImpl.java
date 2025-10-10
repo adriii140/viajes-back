@@ -29,9 +29,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean createUser(UserRegister user) {
+    public boolean registerUser(UserRegister userRegister) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return true;
+        String hashedPassword = passwordEncoder.encode(userRegister.getPasswordHash());
+        userRegister.setPasswordHash(hashedPassword);
+        return userRepository.createUser(userRegister);
         }
 
 }

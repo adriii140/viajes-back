@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.plan2go.viajes_back.api.dtos.User;
+import com.plan2go.viajes_back.api.register.UserRegister;
 import com.plan2go.viajes_back.entity.UserEntity;
 import com.plan2go.viajes_back.mappers.UserMapper;
 import com.plan2go.viajes_back.repository.UserRepository;
@@ -36,6 +37,16 @@ public class UserRepositoryImpl implements UserRepository {
 
 
         return userMapper.toUserList(userEntities);
+    }
+
+    @Override
+    public boolean createUser(UserRegister userRegister) {
+        UserEntity userEntity = userMapper.toUserEntity(userRegister);
+        if(userEntity== null){
+            return false;
+        }
+        entityManager.persist(userEntity);
+        return true;
     }
     
 }

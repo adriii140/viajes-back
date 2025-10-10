@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 
 import com.plan2go.viajes_back.api.dtos.User;
-
+import com.plan2go.viajes_back.api.register.UserRegister;
 import com.plan2go.viajes_back.entity.UserEntity;
 
 @Mapper(componentModel = "spring")
@@ -18,6 +18,9 @@ public interface UserMapper {
 
 
     User toUser(UserEntity entity);
+
+
+    UserEntity toUserEntity(UserRegister userRegister);
 
 
 

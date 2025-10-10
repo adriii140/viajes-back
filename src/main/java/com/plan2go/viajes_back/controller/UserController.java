@@ -41,7 +41,6 @@ public class UserController {
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)))
     @PostMapping("/")
     public boolean registerUser(@RequestBody UserRegister userRegister) {
-        boolean creado = userService.createUser(userRegister);
-        return creado;
+        return userService.registerUser(userRegister);
     }
 }
