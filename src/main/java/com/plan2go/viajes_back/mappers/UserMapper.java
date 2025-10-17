@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.mapstruct.Mapper;
 
-
 import com.plan2go.viajes_back.api.dtos.User;
 import com.plan2go.viajes_back.api.register.UserRegister;
 import com.plan2go.viajes_back.entity.UserEntity;
+import com.plan2go.viajes_back.repository.model.UserConfidential;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
@@ -23,6 +23,9 @@ public interface UserMapper {
     UserEntity toUserEntity(UserRegister userRegister);
 
 
+    UserConfidential toUserConfidential(UserEntity userEntity);
+
+    User toUser(UserConfidential userConfidential);
 
 
 

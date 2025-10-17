@@ -3,7 +3,6 @@ package com.plan2go.viajes_back.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.Instant;
-import java.util.UUID;
 
 
 @Entity

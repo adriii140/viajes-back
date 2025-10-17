@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.plan2go.viajes_back.api.dtos.User;
 import com.plan2go.viajes_back.api.register.UserRegister;
+import com.plan2go.viajes_back.repository.model.UserConfidential;
 
 
 public interface UserRepository {
@@ -12,6 +13,6 @@ public interface UserRepository {
 
     public boolean createUser(UserRegister userRegister);
 
-
+    public UserConfidential findByEmailWithPassword(String email);
     
 }
