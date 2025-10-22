@@ -14,4 +14,5 @@ public interface UserService {
     List<User> findAllUsers();
     boolean registerUser(UserRegister user);
     LoginResponse login (UserLogin userLogin);
+    List<User> findUserByEmail(String email);
 }

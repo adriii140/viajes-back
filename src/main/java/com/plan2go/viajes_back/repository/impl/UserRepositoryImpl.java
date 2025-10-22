@@ -62,4 +62,16 @@ public class UserRepositoryImpl implements UserRepository {
             return list.isEmpty() ? null : userMapper.toUserConfidential(list.get(0));
     }
 
+    @Override
+    public List<User> findByEmail(String email) {
+        String sqlConsulta = "SELECT u FROM UserEntity u WHERE u.email LIKE :email";
+        Query query = (Query) entityManager.createQuery(sqlConsulta, UserEntity.class);
+        query.setParameter("email", "%" + email.trim().toLowerCase() + "%");
+        List<UserEntity> userEntities = query.getResultList();
+        if(userEntities.isEmpty()){
+            return null;
+        }
+        return userMapper.toUserList(userEntities);
+    }
+
 }

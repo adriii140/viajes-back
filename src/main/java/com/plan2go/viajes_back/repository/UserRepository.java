@@ -14,5 +14,7 @@ public interface UserRepository {
     public boolean createUser(UserRegister userRegister);
 
     public UserConfidential findByEmailWithPassword(String email);
+
+    public List<User> findByEmail(String email);
     
 }

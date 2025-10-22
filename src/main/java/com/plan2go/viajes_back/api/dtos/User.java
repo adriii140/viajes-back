@@ -19,5 +19,8 @@ public class User {
 
     @JsonProperty("correo_electronico")
     private String email;
-    
+
+    @JsonProperty("created_at")
+    private String createdAt;
+
 }

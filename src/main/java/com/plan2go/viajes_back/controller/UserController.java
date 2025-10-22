@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 
+import org.mapstruct.control.MappingControl.Use;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -58,4 +59,15 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
     }
 
+    @Operation(summary = "Obtiene un usuario por su correo electrónico")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)))
+    @ApiResponse(responseCode = "500", description = "No encontrado")
+    @GetMapping("/{email}")
+    public ResponseEntity<List<User>> getUserByEmail(@PathVariable String email) {
+        List<User> users = userService.findUserByEmail(email);
+        if (users.isEmpty()) {
+            return new ResponseEntity<>(HttpStatusCode.valueOf(500));
+        }
+        return new ResponseEntity<>(users, HttpStatusCode.valueOf(200));
+    }
 }
